@@ -7,5 +7,8 @@
   },
   "scripts": {
     "dev": "nodemon app.js"
+  },
+  "devDependencies": {
+    "naive-ui": "^2.41.0"
   }
 }

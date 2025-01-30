@@ -1,28 +1,23 @@
-<script>
+<script setup>
 
-import GreetForm from './components/GreetForm.vue';
-
-export default {
-  components: {
-    GreetForm,
-  },
-};
+import { darkTheme } from 'naive-ui';
 
 </script>
 
 <template>
-  <div id="app">
-    <GreetForm/>
-  </div>
+  <n-config-provider :theme="darkTheme">
+    <router-view />
+  </n-config-provider>
 </template>
 
 <style>
 #app {
+  background-color: #121212; /* Тёмный фон */
+  color: #ffffff; /* Белый текст */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 </style>

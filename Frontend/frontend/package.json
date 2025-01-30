@@ -10,7 +10,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -21,6 +22,7 @@
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "naive-ui": "^2.41.0",
     "typescript": "^5.7.2"
   },
   "eslintConfig": {
