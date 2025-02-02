@@ -1,6 +1,7 @@
 # Common folder
 ML Project Details.pdf
 package-lock.json
+node_modules
 
 # Backend folder
 Backend/node_modules

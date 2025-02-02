@@ -14,10 +14,9 @@ import { darkTheme } from 'naive-ui';
 #app {
   background-color: #121212; /* Тёмный фон */
   color: #ffffff; /* Белый текст */
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 60px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
 }
 </style>

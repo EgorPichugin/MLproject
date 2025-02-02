@@ -2,6 +2,7 @@
 import sys
 import os
 import json
+import glob
 import ast
 # Imports for normalization
 import cv2
@@ -53,15 +54,30 @@ def call_model(image_path) -> str: # recive image location
 
     return result_class
 
+def getMessage(message: str) -> str:
+    match message:
+        case "Healthy":
+            return "The pacient is healthy"
+
+        case "Stage 1":
+            return "The pacient has the Mild stage"
+
+        case "Stage 2":
+            return "The pacient has the Moderate stage"
+
+        case "Stage 3":
+            return "The pacient has the Severe stage"
+        
 # This is temporary file instead of the model
 route = ast.literal_eval(sys.argv[1])
 
 if route == "process":
-    message = call_model(f"uploads/Healthy.jpg")
+    # done in a stupid way
+    message = call_model(glob.glob(os.path.join("uploads", "*.jpg"))[0])
 else:
     message = "Invalid route!"
 
-print(message)
+print(getMessage(message))
 
 uploads_folder = os.path.join(os.path.dirname(__file__), 'uploads')
 
