@@ -6,6 +6,7 @@ node_modules
 # Backend folder
 Backend/node_modules
 Dockerfile
+Backend/models/ResNet.pt
 
 # Frontend folder
 Frontend/frontend/node_modules

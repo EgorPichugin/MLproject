@@ -9,6 +9,7 @@ import { ref } from 'vue';
 const diagnose = defineModel({default: '', required: true});
 const isVisible = defineModel('isVisible', {default: false, required: true});
 const isSpinVisible = ref(false);
+const model = defineModel('model',{default: '', required: true})
 
 const process = async () => {
   isVisible.value = false;
@@ -16,7 +17,8 @@ const process = async () => {
   try {
     const response = await fetch('http://localhost:5000/process', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: model.value })
     });
     const data = await response.json();
     isSpinVisible.value = false;

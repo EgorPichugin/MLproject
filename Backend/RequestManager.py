@@ -29,8 +29,8 @@ def get_normalization_values(image: str) -> Tuple[np.ndarray, np.ndarray]:
 
 
 # Model loading, processing image and returning string with class
-def call_model(image_path) -> str: # recive image location
-    loaded_model = torch.load("model_99_acc.pt", map_location=torch.device('cpu'), weights_only=False)
+def call_model(image_path, model) -> str: # recive image location
+    loaded_model = torch.load(f"./models/{model}.pt", map_location=torch.device('cpu'), weights_only=False)
     loaded_model.eval()
 
     mean_np, std_np = get_normalization_values(image_path)
@@ -55,11 +55,12 @@ def call_model(image_path) -> str: # recive image location
     return result_class
         
 # This is temporary file instead of the model
-route = ast.literal_eval(sys.argv[1])
+route: str = ast.literal_eval(sys.argv[1])
+model: str = ast.literal_eval(sys.argv[2])
 
 if route == "process":
     # done in a stupid way
-    message = call_model(glob.glob(os.path.join("uploads", "*.jpg"))[0])
+    message = call_model(glob.glob(os.path.join("uploads", "*.jpg"))[0], model)
 else:
     message = "Invalid route!"
 

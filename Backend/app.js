@@ -8,11 +8,11 @@ const fs = require('fs');
 app.use(cors()); 
 app.use(express.json());
 
-const callPythonScript = async (route, name) => {
+const callPythonScript = async (route, model) => {
     const spawner = require('child_process').spawn;
 
     return new Promise((resolve, reject) => {
-        const pythonProcess = spawner('myenv\\Scripts\\python', ['./RequestManager.py', JSON.stringify(route), JSON.stringify(name)]);
+        const pythonProcess = spawner('myenv\\Scripts\\python', ['./RequestManager.py', JSON.stringify(route), JSON.stringify(model)]);
         pythonProcess.stdout.on('data', (data) => {
             console.log('Data received from python script:', data.toString());
             resolve(data.toString()); // Resolve the promise with the data
@@ -50,7 +50,8 @@ const clearUploadsFolder = (folderPath) => {
 
 app.post('/process', async (req, res) => {
     try {
-        const response = await callPythonScript('process');
+        const { model } = req.body;
+        const response = await callPythonScript('process', model);
         clearUploadsFolder("uploads/");
         res.json(response);
     } catch (error) {

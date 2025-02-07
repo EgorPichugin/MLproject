@@ -8,12 +8,14 @@ import CommonInformation from './CommonInformation.vue';
 import ClientInformation from './ClientInformation.vue';
 import DiagnoseModalDialog from './DiagnoseModalDialog.vue';
 import { healthy, mild, moderate, severe } from '@/constants/TextConstants.ts';
+import ModelsComboBox from './ModelsComboBox.vue';
 
 const diagnose = ref('');
 const isButtonVisible = ref(false);
 const showModal = ref(false);
 const modalTitle = ref('');
 const diagnoseContent = ref('');
+const selectedModel = ref('EfficientNet');
 
 function onMakeButtonVisible() {
   isButtonVisible.value = true;
@@ -69,9 +71,15 @@ watch(diagnose, (updatedDiagnose) => {
         @makeButtonVisible="onMakeButtonVisible"
         @clearDiagnose="clearDiagnose"
       />
+
       <ProcessButton 
         v-model="diagnose"
         v-model:is-visible="isButtonVisible"
+        v-model:model="selectedModel"
+      />
+
+      <ModelsComboBox
+        v-model="selectedModel"
       />
     </div>
   </n-card>
