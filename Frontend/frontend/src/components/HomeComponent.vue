@@ -6,9 +6,8 @@ import FileInput from './FileInput.vue'
 import { NCard } from 'naive-ui';
 import CommonInformation from './CommonInformation.vue';
 import ClientInformation from './ClientInformation.vue';
-import { NModal } from 'naive-ui';
+import DiagnoseModalDialog from './DiagnoseModalDialog.vue';
 import { healthy, mild, moderate, severe } from '@/constants/TextConstants.ts';
-import { NButton } from 'naive-ui';
 
 const diagnose = ref('');
 const isButtonVisible = ref(false);
@@ -23,11 +22,6 @@ function onMakeButtonVisible() {
 function clearDiagnose() {
   diagnose.value = '';
   diagnoseContent.value = '';
-}
-
-function okClick() {
-  diagnose.value = '';
-  showModal.value = false;
 }
 
 watch(diagnose, (updatedDiagnose) => {
@@ -86,23 +80,12 @@ watch(diagnose, (updatedDiagnose) => {
     <CommonInformation/>
   </n-card>
 
-  <n-modal v-model:show="showModal">
-    <n-card
-      style="width: 600px"
-      :title="modalTitle"
-      :bordered="true"
-      size="huge"
-      role="dialog"
-      aria-modal="true">
-        <div v-html="diagnoseContent">
-        </div>
-        <n-button
-          @click="okClick" 
-          style="width: 100%; margin-top: 20px;">
-            Ok
-        </n-button>
-    </n-card>
-  </n-modal>
+  
+  <DiagnoseModalDialog 
+    v-model="showModal"
+    v-model:diagnose="diagnoseContent"
+    v-model:title="modalTitle"
+  />
 
 </template>
 
