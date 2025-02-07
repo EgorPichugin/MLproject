@@ -34,18 +34,22 @@ const process = async () => {
     <n-space v-if="isSpinVisible">
       <n-spin size="medium" />
     </n-space>
-    <n-button v-else @click="process" style="width: 100%;" :disabled="!isVisible">Get diagnose</n-button>
-    <h2 v-if="diagnose">{{ diagnose }}</h2>
+    <n-button v-else 
+      @click="process" 
+      style="width: 100%;" 
+      :disabled="!isVisible">Get diagnose
+    </n-button>
   </div>
 
 </template>
 
 <style scoped>
 .center-container {
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
-  height: 3vh;
+  height: 100%;
+  width: 100%;
 }
 </style>

@@ -3,7 +3,7 @@ import cv2
 import os
 from tqdm import tqdm
 
-IMAGES_PATH = r'C:\Users\aquas\Jupyter\ML_Project_git\dataset\train'
+IMAGES_PATH = r'C:\\Users\\aquas\\Jupyter\\ML_Project_git\\dataset\\train'
 pixel_sum, pixel_squared_sum, pixel_count = np.zeros(3, dtype=np.float64), np.zeros(3, dtype=np.float64), 0
 
 files_list = [os.path.join(root, file) for root, _, files in os.walk(IMAGES_PATH) for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg'))]
@@ -20,7 +20,7 @@ for file_path in tqdm(files_list, desc="Processing images", unit="image"):
 mean_np = pixel_sum / pixel_count
 std_np = np.sqrt(pixel_squared_sum / pixel_count - mean_np ** 2)
 
-with open(r'C:\Users\aquas\Jupyter\ML_Project_git\MLproject\helper files\meanstd.txt', 'w') as file:
+with open(r'C:\\Users\\aquas\\Jupyter\\ML_Project_git\\MLproject\\helper files\\meanstd.txt', 'w') as file:
     file.write(f"Mean: {mean_np.tolist()}\n")
     file.write(f"Standard Deviation: {std_np.tolist()}\n")
 

@@ -27,8 +27,9 @@ const age = ref('');
     </n-radio-group>
 
     <n-space vertical>
+        <!-- TODO: validation for inputs -->
         <n-input labeltype="text" placeholder="Name" v-model:value="name"/>
-        <n-input labeltype="text" placeholder="Age" v-model:value="age"/>
+        <n-input labeltype="integer" placeholder="Age" v-model:value="age"/>
     </n-space>
 
 </template>

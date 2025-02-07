@@ -53,20 +53,6 @@ def call_model(image_path) -> str: # recive image location
     result_class = result_map[predicted_class]
 
     return result_class
-
-def getMessage(message: str) -> str:
-    match message:
-        case "Healthy":
-            return "The pacient is healthy"
-
-        case "Stage 1":
-            return "The pacient has the Mild stage"
-
-        case "Stage 2":
-            return "The pacient has the Moderate stage"
-
-        case "Stage 3":
-            return "The pacient has the Severe stage"
         
 # This is temporary file instead of the model
 route = ast.literal_eval(sys.argv[1])
@@ -77,7 +63,8 @@ if route == "process":
 else:
     message = "Invalid route!"
 
-print(getMessage(message))
+# print(getMessage(message))
+print(message)
 
 uploads_folder = os.path.join(os.path.dirname(__file__), 'uploads')
 
