@@ -4,7 +4,7 @@ Weather Application is a console-based pet project that allows users to display 
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 ### Languages
 - C#
